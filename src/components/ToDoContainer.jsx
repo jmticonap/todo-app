@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './css/ToDoContainer.css'
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import SendIcon from '@mui/icons-material/Send';
@@ -9,7 +10,7 @@ import Box from '@mui/material/Box'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import CardActions from '@mui/material/CardActions'
 
-const ToDoContainer = ({ setter, updatetable }) => {
+const ToDoContainer = ({ setter, updatetable, setterForm }) => {
     const [txtId, setTxtId] = useState("")
     const [txtName, setTxtName] = useState("")
     const [txtCategory, setTxtCategory] = useState("")
@@ -39,6 +40,8 @@ const ToDoContainer = ({ setter, updatetable }) => {
         setTxtCategory("")
         setTxtPrice("")
         setIsAvailable("")
+       
+        setterForm(false)
 
     }
 
@@ -54,59 +57,61 @@ const ToDoContainer = ({ setter, updatetable }) => {
 
 
     return (
-        <Card
-            component="form"
-            sx={{ maxWidth: 345 }}>
-            <CardHeader
-                title="Product CRUD"
-            />
-
-
-            <Box
-                sx={{
-                    '& > :not(style)': { m: 1, width: '25ch' },
-                }}
-                noValidate
-                autoComplete="off">
-                <input id="id"
-                    type="hidden"
-                    value={txtId} />
-                <TextField id="name"
-                    onChange={e => setTxtName(e.target.value)}
-                    value={txtName}
-                    label="Name"
-                    variant="outlined"
-                    type="text" />
-                <TextField id="category"
-                    onChange={e => setTxtCategory(e.target.value)}
-                    value={txtCategory}
-                    label="Category"
-                    variant="outlined"
-                    type="text" />
-                <TextField id="price"
-                    onChange={e => setTxtPrice(e.target.value)}
-                    value={txtPrice}
-                    label="Price"
-                    variant="outlined"
-                    type='number' />
-                <FormControlLabel
-                    value="start"
-                    control={<Checkbox id="isavailable"
-                        onChange={e => setIsAvailable(e.target.checked)}
-                        checked={isAvailable} />}
-                    label="Is available: "
-                    labelPlacement="start"
+        <div className='modal-form'>
+            <Card
+                component="form"
+                sx={{ maxWidth: '20rem' }}>
+                <CardHeader
+                    title="Product CRUD"
                 />
-            </Box>
-            <CardActions disableSpacing>
-                <Button
-                    onClick={saveData}
-                    variant="contained" >
-                    <SendIcon />
-                </Button>
-            </CardActions>
 
-        </Card>
+
+                <Box
+                    sx={{
+                        '& > :not(style)': { m: 1, width: '25ch' },
+                    }}
+                    noValidate
+                    autoComplete="off">
+                    <input id="id"
+                        type="hidden"
+                        value={txtId} />
+                    <TextField id="name"
+                        onChange={e => setTxtName(e.target.value)}
+                        value={txtName}
+                        label="Name"
+                        variant="outlined"
+                        type="text" />
+                    <TextField id="category"
+                        onChange={e => setTxtCategory(e.target.value)}
+                        value={txtCategory}
+                        label="Category"
+                        variant="outlined"
+                        type="text" />
+                    <TextField id="price"
+                        onChange={e => setTxtPrice(e.target.value)}
+                        value={txtPrice}
+                        label="Price"
+                        variant="outlined"
+                        type='number' />
+                    <FormControlLabel
+                        value="start"
+                        control={<Checkbox id="isavailable"
+                            onChange={e => setIsAvailable(e.target.checked)}
+                            checked={isAvailable} />}
+                        label="Is available: "
+                        labelPlacement="start"
+                    />
+                </Box>
+                <CardActions disableSpacing>
+                    <Button
+                        onClick={saveData}
+                        variant="contained" >
+                        <SendIcon />
+                    </Button>
+                </CardActions>
+
+            </Card>
+        </div>
     );
 };
 

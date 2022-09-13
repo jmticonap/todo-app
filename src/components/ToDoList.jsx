@@ -37,10 +37,16 @@ const ToDoList = ({ todoItems, deleteItem, updateItem }) => {
                             </li>
                         </ul>
                         <div className='todo-item__actions'>
-                            <Button variant='contained' onClick={()=>onDeleteItem(item?.id)}>
+                            <Button 
+                                sx={{backgroundColor: 'var(--color-button)'}}
+                                variant='contained' 
+                                onClick={()=>onDeleteItem(item?.id)}>
                                 <DeleteIcon />
                             </Button>
-                            <Button variant='contained' onClick={()=>onUpdateItem(item)}>
+                            <Button
+                                sx={{backgroundColor: 'var(--color-button)'}} 
+                                variant='contained' 
+                                onClick={()=>onUpdateItem(item)}>
                                 <EditIcon />
                             </Button>
                         </div>
